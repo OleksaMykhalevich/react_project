@@ -1,10 +1,14 @@
 import React from 'react'
+import { CartTotal } from './CartTotal'
+import { CartProductList } from './CartProductList'
+import { useSelector } from 'react-redux'
 
-export const CartHeader = ({ cartData }) => {
+export const CartHeader = () => {
+    const productsInCart = useSelector((state) => state.productsInCart)
     return (
         <div>
-            <div>{cartData.totalCount}</div>
-            <div>${cartData.totalPrice}</div>
+            <CartProductList productsInCart={productsInCart} />
+            <CartTotal productsInCart={productsInCart} />
         </div>
     )
 }
